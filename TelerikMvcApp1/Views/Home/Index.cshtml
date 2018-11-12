@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+        <div class="navbar-fixed-topc">
+            @(Html.Kendo().ButtonGroup()
+                .Name("player")
+                .Items(t =>
+                {
+                    t.Add().Text("Orders").HtmlAttributes(new { style = "width: inherit;" });
+                    t.Add().Text("Can buy").HtmlAttributes(new { style = "width: inherit;" });
+                    t.Add().Text("Sellers").HtmlAttributes(new { style = "width: inherit;" });
+                    t.Add().Text("In hands").HtmlAttributes(new { style = "width: inherit;" });
+                    t.Add().Text("Log out").HtmlAttributes(new { style = "width: inherit;" });
+                })
+                .Events(ev => ev.Select("onSelect"))
+                .HtmlAttributes(new { style ="width:100%"})
+            )
+        </div>
+            <div style="width:100%">
+                <H1 style ="position:center; text-align:center" id="textbox"></H1>
+            </div>
+
+
+
+<script>
+    function onSelect(e) {
+        var index = e.indices;
+        var url = '@Url.Action("GetOrders")';
+        $("#textbox").load(url);
+    }
+</script>
+
+<style>
+    .menu {
+        position: absolute;
+        height: 200px;
+        width: 400px;
+        margin: -100px 0 0 -200px;
+        left: 50%;
+    }
+</style>
+
+

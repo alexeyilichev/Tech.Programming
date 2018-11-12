@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TelerikMvcApp1.Models.Orders>
+
+<div>
+    @(Html.Kendo().Grid(Model)
+                                       .Name("OrdersGrid")
+                                       .Columns(columns =>
+                                       {
+                                           columns.Bound(c => c.Id).Visible(false);
+                                           columns.Bound(c => c.Name).Title("Name");
+                                           columns.Bound(c => c.Price).Title("Price");
+                                           columns.Bound(c => c.Count).Title("Count");//.ClientTemplate("<div id='topB'><span class='top-bound-value'>#=Count#</span><input name='CountInput' style='display:none;'/></div>");
+                                           columns.Bound(c => c.Place).Title("Place");
+                                           columns.Command(command =>
+                                           {
+                                               command.Custom("To order").Click("toOrder");
+                                           });
+                                       })
+                                       .DataSource(dataSource => dataSource
+                                           .Ajax()
+                                           .Read(read => read.Action("Orders_Read","Grid"))
+                                           )
+    )
+</div>
