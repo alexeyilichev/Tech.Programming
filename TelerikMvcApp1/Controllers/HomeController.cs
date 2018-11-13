@@ -11,7 +11,7 @@ namespace TelerikMvcApp1.Controllers
 {
     public class HomeController : Controller
     {
-
+        private static Database _db = new Database();
         public ActionResult Index()
         {
             return View();
@@ -20,9 +20,22 @@ namespace TelerikMvcApp1.Controllers
         {
                 return PartialView("_Orders");
         }
-        public ActionResult Orders_Read(Orders model)
+        public ActionResult Orders_Read([DataSourceRequest] DataSourceRequest request)
         {
-                return PartialView("_Orders", model);
+            return Json(GetOrdersEnum().ToDataSourceResult(request));
+        }
+        private static IEnumerable<Orders> GetOrdersEnum()
+        {
+            var northwind = _db;
+
+            return northwind.Orders.AsEnumerable().Select(order => new Orders
+            {
+                Id = order.Id,
+                Name = order.Name,
+                Count = order.Count,
+                Price = order.Price,
+                Place = order.Place
+            });
         }
     }
 }

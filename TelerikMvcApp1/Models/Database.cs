@@ -5,10 +5,10 @@ namespace TelerikMvcApp1.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Order : DbContext
+    public partial class Database : DbContext
     {
-        public Order()
-            : base("name=Order")
+        public Database()
+            : base("name=Database")
         {
         }
 
@@ -16,7 +16,7 @@ namespace TelerikMvcApp1.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Build(Database.Connection);
         }
     }
 }

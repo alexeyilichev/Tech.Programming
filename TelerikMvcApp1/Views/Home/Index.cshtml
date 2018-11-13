@@ -2,8 +2,8 @@
     ViewBag.Title = "Home Page";
 }
 
-        <div class="navbar-fixed-topc">
-            @(Html.Kendo().ButtonGroup()
+<div class="navbar-fixed-topc">
+    @(Html.Kendo().ButtonGroup()
                 .Name("player")
                 .Items(t =>
                 {
@@ -14,12 +14,12 @@
                     t.Add().Text("Log out").HtmlAttributes(new { style = "width: inherit;" });
                 })
                 .Events(ev => ev.Select("onSelect"))
-                .HtmlAttributes(new { style ="width:100%"})
-            )
-        </div>
-            <div style="width:100%">
-                <H1 style ="position:center; text-align:center" id="textbox"></H1>
-            </div>
+                .HtmlAttributes(new { style = "width:100%" })
+    )
+</div>
+<div style="width:100%">
+    <H1 style="position:center; text-align:center" id="textbox"></H1>
+</div>
 
 
 
@@ -28,6 +28,9 @@
         var index = e.indices;
         var url = '@Url.Action("GetOrders")';
         $("#textbox").load(url);
+    }
+    function toOrder(){
+        debugger;
     }
 </script>
 
