@@ -16,9 +16,10 @@ namespace TelerikMvcApp1.Controllers
         {
             return View();
         }
+        #region Orders
         public ActionResult GetOrders()
         {
-                return PartialView("_Orders");
+            return PartialView("_Orders");
         }
         public ActionResult Orders_Read([DataSourceRequest] DataSourceRequest request)
         {
@@ -37,5 +38,43 @@ namespace TelerikMvcApp1.Controllers
                 Place = order.Place
             });
         }
+        #endregion
+
+        #region MyOrder
+
+        public ActionResult GetMyOrder()
+        {
+            return PartialView("_MyOrder");
+        }
+
+        #endregion
+
+        #region Sellers
+
+        public ActionResult GetSellers()
+        {
+            return PartialView("_Sellers");
+        }
+
+        #endregion
+
+        #region MyItems
+
+        public ActionResult GetMyItems()
+        {
+            return PartialView("_MyItems");
+        }
+
+        #endregion
+
+        #region Authorize
+
+        public ActionResult GetAuthorize()
+        {
+            ViewBag.Name = "Alex";
+            return PartialView("_Authorize");
+        }
+
+        #endregion
     }
 }

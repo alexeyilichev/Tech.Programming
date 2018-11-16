@@ -18,7 +18,7 @@
     )
 </div>
 <div style="width:100%">
-    <H1 style="position:center; text-align:center" id="textbox"></H1>
+    <div style="position:center; text-align:center" id="mainpage"></div>
 </div>
 
 
@@ -26,8 +26,26 @@
 <script>
     function onSelect(e) {
         var index = e.indices;
-        var url = '@Url.Action("GetOrders")';
-        $("#textbox").load(url);
+        debugger;
+        switch (index[0]) {
+            case 0:
+                var url = '@Url.Action("GetMyOrder")';
+                break;
+            case 1:
+                var url = '@Url.Action("GetOrders")';
+                break;
+            case 2:
+                var url = '@Url.Action("GetSellers")';
+                break;
+            case 3:
+                var url = '@Url.Action("GetMyItems")';
+                break;
+            case 4:
+                var url = '@Url.Action("GetAuthorize")';
+                break;
+        }
+        
+        $("#mainpage").load(url);
     }
     function toOrder(){
         debugger;

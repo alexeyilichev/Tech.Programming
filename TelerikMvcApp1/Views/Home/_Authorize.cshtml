@@ -1,0 +1,16 @@
+﻿<div style="width:100%; height:100%;position:center">
+    <div style="display:block; margin-left:40%; margin-right:40%;" class="bg-primary">
+        <div style="width:90%; margin-left:5%; margin-right:5%">
+            <br /><h3><span class="badge">Login, @ViewBag.Name</span></h3>
+            @(Html.Kendo().TextBox().HtmlAttributes(new { style = "width: inherit;" }).Name("login"))
+        </div>
+            <div style="width:90%; margin-left:5%; margin-right:5%">
+                <br /><h3><span class="badge">Password</span></h3>
+                @(Html.Kendo().TextBox().HtmlAttributes(new { style = "width: inherit;" }).Name("pword"))
+            </div><br />
+            <div style="width:50%; margin-left:25%; margin-right:25%">
+                @(Html.Kendo().Button().Name("logInButton").HtmlAttributes(new { type = "button", @class = "k-primary" }).Content("Log in")/*.Events(ev => ev.Click("loginClick"))*/)
+            </div><br />
+    </div>
+</div>
+
