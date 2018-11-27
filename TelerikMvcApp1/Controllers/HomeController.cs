@@ -55,6 +55,22 @@ namespace TelerikMvcApp1.Controllers
         {
             return PartialView("_Sellers");
         }
+        public ActionResult Sellers_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(GetSellersEnum().ToDataSourceResult(request));
+        }
+        private static IEnumerable<Sellers> GetSellersEnum()
+        {
+            var northwind = _db;
+
+            return northwind.Sellers.AsEnumerable().Select(seller => new Sellers
+            {
+                Id = seller.Id,
+                Name = seller.Name,
+                Place = seller.Place,
+                Rate = seller.Rate
+            });
+        }
 
         #endregion
 
@@ -71,7 +87,6 @@ namespace TelerikMvcApp1.Controllers
 
         public ActionResult GetAuthorize()
         {
-            ViewBag.Name = "Alex";
             return PartialView("_Authorize");
         }
 

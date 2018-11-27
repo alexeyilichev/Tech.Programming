@@ -116,6 +116,7 @@
     </Compile>
     <Compile Include="Models\Database.cs" />
     <Compile Include="Models\Orders.cs" />
+    <Compile Include="Models\Sellers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,1 +1,24 @@
-﻿
+﻿@model IEnumerable<TelerikMvcApp1.Models.Sellers>
+
+<div>
+    @(Html.Kendo().Grid(Model)
+                                               .Name("SellersGrid")
+                                               .Columns(columns =>
+                                               {
+                                                   columns.Bound(c => c.Id).Visible(false);
+                                                   columns.Bound(c => c.Name).Title("Name");
+                                                   columns.Bound(c => c.Place).Title("Place");//.Editable();
+                                                   columns.Bound(c => c.Rate).Title("Rate");//.ClientTemplate("<div id='topB'><span class='top-bound-value'>#=Count#</span><input name='CountInput' style='display:none;'/></div>");
+                                               })
+                                               .DataSource(dataSource => dataSource
+                                                   .Ajax()
+                                                   .Read(read => read.Action("Sellers_Read", "Home"))
+                                                   )
+                                               .Sortable()
+                                               .Filterable()
+                                               .Groupable()
+    )
+</div>
+
+
+

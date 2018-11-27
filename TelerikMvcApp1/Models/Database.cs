@@ -14,6 +14,8 @@ namespace TelerikMvcApp1.Models
 
         public virtual DbSet<Orders> Orders { get; set; }
 
+        public virtual DbSet<Sellers> Sellers { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Build(Database.Connection);
